@@ -1,6 +1,4 @@
 
-<div align="center"> <img src="https://res.cloudinary.com/dvzingci9/image/upload/v1691682049/Personal_Branding/Frame_164_meg7rg.png"> </div>
-
 <h3 align="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=40&pause=950&center=true&vCenter=true&random=false&width=435&lines=Hi+there!%F0%9F%91%8B;I'm+Long!" alt="Typing SVG" /></h3>
 
 <h3 align="center">I'm a Web Developer</h3>
@@ -29,7 +27,7 @@
   </a>
 </div>
 <h2 align="center">⚒️ Code from home ⚒️</h2>
- <div align="center"> <img src="https://private-user-images.githubusercontent.com/74038190/240815068-993370af-11f4-48e7-9e0d-e5b79c2e7890.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTMwOTEyOTcsIm5iZiI6MTcxMzA5MDk5NywicGF0aCI6Ii83NDAzODE5MC8yNDA4MTUwNjgtOTkzMzcwYWYtMTFmNC00OGU3LTllMGQtZTViNzljMmU3ODkwLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDE0VDEwMzYzN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdlOGVkNGU5MTU3NzkwNjRiMjM4NzA2ODI5NDY3YzNmZTIwNWM1MDlmMTAzYWIyZTJjMWVmMDdlZDE5NjJmY2YmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.sCiOmEswFId6W2shor5SZO6HU_AQjtQek5Mny_5cNFI"> </div>
+ <div align="center"> <img src="https://img.freepik.com/free-photo/futurism-perspective-digital-nomads-lifestyle_23-2151252464.jpg?t=st=1718465486~exp=1718469086~hmac=f6e87786b596da010f898bb228e29d5ba94ba1f396386e3d72935a39c1aa249f&w=2000"> </div>
 
 
 <h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
