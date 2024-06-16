@@ -27,7 +27,7 @@
   </a>
 </div>
 <h2 align="center">⚒️ Code from home ⚒️</h2>
- <div align="center"> <img src="https://img.freepik.com/free-photo/futurism-perspective-digital-nomads-lifestyle_23-2151252464.jpg?t=st=1718465486~exp=1718469086~hmac=f6e87786b596da010f898bb228e29d5ba94ba1f396386e3d72935a39c1aa249f&w=2000" style="height: 30%; width: 100%;"> </div>
+ <div align="center"> <img src="https://img.freepik.com/free-psd/business-man-illustration_1150-59058.jpg?w=2000&t=st=1718527332~exp=1718527932~hmac=002704c1daafb5b0738cf2d84381d81858a53a5d65d8fe1accfb4c2416d879cc" style="height: 25%; width: 60%;"> </div>
 
 
 <h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
