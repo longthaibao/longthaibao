@@ -26,7 +26,6 @@
      <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white" target="_blank" /> <!-- sqlite, safari, google-chrome are other good icon options -->
   </a>
 </div>
-<h2 align="center">⚒️ Code from home ⚒️</h2>
  <div align="center"> <img src="https://res.cloudinary.com/dnvgwwx9s/image/upload/v1718527871/3d-rendering-cartoon-like-boy-ready-adventure_skozzm.png" style="height: 25%; width: 60%;"> </div>
 
 
