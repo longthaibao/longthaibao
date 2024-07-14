@@ -19,10 +19,10 @@
   <a href="mailto:long.thaibao2710@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" />
   </a>
-  <a href="https://www.linkedin.com/in/longthaibao27/">
+  <a href="https://www.linkedin.com/in/longthaibao27/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"  />
   </a>
-  <a href="https://portfoliooflong.my.canva.site/">
+  <a href="https://portfoliooflong.my.canva.site/" target="_blank">
      <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white"  /> <!-- sqlite, safari, google-chrome are other good icon options -->
   </a>
 </div>
