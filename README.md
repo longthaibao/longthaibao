@@ -1,7 +1,7 @@
 
 <h3 align="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=40&pause=950&center=true&vCenter=true&random=false&width=435&lines=Hi+there!%F0%9F%91%8B;I'm+Long!" alt="Typing SVG" /></h3>
 
-<h3 align="center">I'm a Web Developer</h3>
+<h3 align="center">I'm a Gymer</h3>
 
 <br/>
 
