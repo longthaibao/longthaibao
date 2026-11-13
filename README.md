@@ -1,66 +1,62 @@
+<div align="center">
+  <img src="./assets/hero.svg" width="100%" alt="Thái Bảo Long — Full-stack Developer" />
 
-<h3 align="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=40&pause=950&center=true&vCenter=true&random=false&width=435&lines=Hi+there!%F0%9F%91%8B;I'm+Long!" alt="Typing SVG" /></h3>
+  <br/><br/>
 
-<h3 align="center">I'm a Gymer</h3>
+  <a href="mailto:long.thaibao2710@gmail.com"><img src="https://img.shields.io/badge/Gmail-0a0e1f?style=for-the-badge&logo=gmail&logoColor=22d3ee" /></a>
+  <a href="https://www.linkedin.com/in/longthaibao27/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0a0e1f?style=for-the-badge&logo=linkedin&logoColor=22d3ee" /></a>
+  <a href="https://portfoliooflong.my.canva.site/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-0a0e1f?style=for-the-badge&logo=canva&logoColor=a78bfa" /></a>
+  <img src="https://komarev.com/ghpvc/?username=longthaibao&label=PROFILE%20VIEWS&color=0a0e1f&style=for-the-badge" />
+</div>
+
+<img src="./assets/divider.svg" width="100%" />
+
+<div align="center">
+  <img src="./assets/terminal.svg" width="90%" alt="whoami" />
+</div>
+
+<img src="./assets/divider.svg" width="100%" />
+
+<h2 align="center">⟨ Tech Stack /⟩</h2>
+
+<div align="center">
+  <sub><code>LANGUAGES</code></sub><br/>
+  <img src="https://skillicons.dev/icons?i=ts,js,cs,html,css,sass&theme=dark" /><br/><br/>
+
+  <sub><code>FRONTEND</code></sub><br/>
+  <img src="https://skillicons.dev/icons?i=react,nextjs,vite,redux,tailwind,mui,bootstrap&theme=dark" /><br/><br/>
+
+  <sub><code>BACKEND &amp; DATA</code></sub><br/>
+  <img src="https://skillicons.dev/icons?i=nodejs,nestjs,express,prisma,postgres,mongodb,mysql,firebase&theme=dark" /><br/><br/>
+
+  <sub><code>DESKTOP · MOBILE · DEVOPS</code></sub><br/>
+  <img src="https://skillicons.dev/icons?i=electron,flutter,docker,nginx,git,github,vscode,figma&theme=dark" />
+</div>
+
+<img src="./assets/divider.svg" width="100%" />
+
+<h2 align="center">⟨ Telemetry /⟩</h2>
+
+<div align="center">
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=longthaibao&show_icons=true&hide_border=true&bg_color=0a0e1f&title_color=22d3ee&icon_color=a78bfa&text_color=e2e8f0&ring_color=22d3ee" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=longthaibao&layout=compact&langs_count=8&hide=c%23,powershell,Mathematica,Ruby,Objective-C,Objective-C%2b%2b,Cuda&hide_border=true&bg_color=0a0e1f&title_color=22d3ee&text_color=e2e8f0" />
+  <br/>
+  <img width="85%" src="https://streak-stats.demolab.com?user=longthaibao&hide_border=true&background=0a0e1f&ring=22d3ee&fire=f472b6&currStreakLabel=22d3ee&sideLabels=a78bfa&currStreakNum=e2e8f0&sideNums=e2e8f0&dates=64748b&stroke=1e293b" />
+  <br/>
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=longthaibao&bg_color=0a0e1f&color=a78bfa&line=22d3ee&point=f472b6&area=true&area_color=22d3ee&hide_border=true&title_color=22d3ee" />
+</div>
+
+<img src="./assets/divider.svg" width="100%" />
+
+<h2 align="center">⟨ Contributions /⟩</h2>
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/longthaibao/longthaibao/output/snake-dark.svg" />
+    <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/longthaibao/longthaibao/output/snake.svg" />
+  </picture>
+</div>
 
 <br/>
 
-<div align="center">
-
- 🌍 I'm based in Vietnamese 
- 
- 🔭 I’m currently study on **HCMUT**
-
- ⚡ Fun fact **I'm a footballer**
- 
- </div>
-
-<div align="center"> 
-  <a href="mailto:long.thaibao2710@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" />
-  </a>
-  <a href="https://www.linkedin.com/in/longthaibao27/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"  />
-  </a>
-  <a href="https://portfoliooflong.my.canva.site/" target="_blank">
-     <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white"  /> <!-- sqlite, safari, google-chrome are other good icon options -->
-  </a>
-</div>
- <div align="center"> <img src="https://res.cloudinary.com/dnvgwwx9s/image/upload/v1718527871/3d-rendering-cartoon-like-boy-ready-adventure_skozzm.png" style="height: 25%; width: 60%;"> </div>
-
-
-<h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
-<br/>
-<div align="center">
-    <img src="https://skillicons.dev/icons?i=nodejs,express,firebase,mongodb" /><br>
-    <img src="https://skillicons.dev/icons?i=react,flutter,javascript,typescript,npm,yarn" /><br>
-    <img src="https://skillicons.dev/icons?i=bootstrap,mui,mysql,html,css,sass,tailwind,vscode,figma,git" />
-</div>
-  <br/><br/><br/>
-<hr/>
-<br>
-<div align="center">
-  <h2>🐍 My Contributions 🐍</h2>
-  <br>
-  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/longthaibao/longthaibao/output/snake.svg" />
-  <br/><br/><br/>
-</div>
-
-<hr/>
-<br>
-<h2 align="center">🔥 GitHub Stats 🔥</h2>
-<!-- https://github.com/anuraghazra/github-readme-stats -->
-<br>
-<div align=center>
-  <a href="#" title="longthaibao">
-    <img width="315" align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=longthaibao&hide=c%23,powershell,Mathematica,Ruby,Objective-C,Objective-C%2b%2b,Cuda&title_color=61dafb&text_color=ffffff&icon_color=61dafb&bg_color=20232a&langs_count=8&layout=compact&border_color=61dafb&hide_border=true" />
-  </a>
-  <a href="#" title="longthaibao">
-    <img align="right" width="434" src="https://github-readme-stats.vercel.app/api?username=longthaibao&show_icons=true&theme=react&border_color=61dafb&hide_border=true" />
-  </a>
-</div>
-
-
-<h3 align="center">
-    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=900&size=30&pause=950&center=true&vCenter=true&random=false&width=435&lines=Thanks+for+visiting!+%F0%9F%91%8B+;Manucian!" alt="Typing SVG" /></a>
-</h3>
+<img src="./assets/footer.svg" width="100%" alt="Thanks for visiting" />
