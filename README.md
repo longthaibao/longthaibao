@@ -37,19 +37,6 @@
 
 <h2 align="center">⟨ Telemetry /⟩</h2>
 
-<div align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=longthaibao&show_icons=true&hide_border=true&bg_color=0a0e1f&title_color=22d3ee&icon_color=a78bfa&text_color=e2e8f0&ring_color=22d3ee" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=longthaibao&layout=compact&langs_count=8&hide=c%23,powershell,Mathematica,Ruby,Objective-C,Objective-C%2b%2b,Cuda&hide_border=true&bg_color=0a0e1f&title_color=22d3ee&text_color=e2e8f0" />
-  <br/>
-  <img width="85%" src="https://streak-stats.demolab.com?user=longthaibao&hide_border=true&background=0a0e1f&ring=22d3ee&fire=f472b6&currStreakLabel=22d3ee&sideLabels=a78bfa&currStreakNum=e2e8f0&sideNums=e2e8f0&dates=64748b&stroke=1e293b" />
-  <br/>
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=longthaibao&bg_color=0a0e1f&color=a78bfa&line=22d3ee&point=f472b6&area=true&area_color=22d3ee&hide_border=true&title_color=22d3ee" />
-</div>
-
-<img src="./assets/divider.svg" width="100%" />
-
-<h2 align="center">⟨ Contributions /⟩</h2>
-
 <img src="./assets/contrib.svg" width="100%" alt="Contribution city — last 365 days" />
 
 <br/>
