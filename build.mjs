@@ -155,7 +155,7 @@ function hero() {
   const ox = 920, oy = 190;
   const orbit = `M${ox - 190} ${oy} a190 44 0 1 0 380 0 a190 44 0 1 0 -380 0`;
 
-  const chips = ['VIETNAM', 'HCMUT', 'OPEN TO COLLAB'];
+  const chips = ['VIETNAM', 'HCMUT ALUMNI', '@ VEGAS CLUB'];
   let chipX = 80, chipSvg = '';
   for (const label of chips) {
     const cw = label.length * 12 * MONO_CHAR_W + label.length * 2 + 26;
@@ -166,13 +166,13 @@ function hero() {
     chipX += cw + 10;
   }
 
-  const roles = ['Full-stack Developer', 'Realtime Systems Builder', 'Gymer  ·  Footballer  ·  Manucian'];
+  const roles = ['Casino Software Developer', 'Realtime Jackpot Systems', 'Gymer  ·  Footballer  ·  Manucian'];
   const roleSvg = roles.map((r, i) => `<text class="role r${i}" x="80" y="232" font-family="${MONO}" font-size="20" fill="${C.text}">`
     + `<tspan fill="${C.cyan}">&gt;_ </tspan>${esc(r)}</text>`).join('');
 
   const corner = (x, y, sx, sy) => `<path d="M${x} ${y + sy * 22}V${y}H${x + sx * 22}" fill="none" stroke="${C.cyan}" stroke-width="2" stroke-opacity="0.7"/>`;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Thái Bảo Long — Full-stack Developer">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Thái Bảo Long — Casino Software Developer">
 <style>
   .role{opacity:0;animation:role 9s infinite}
   .r1{animation-delay:3s}.r2{animation-delay:6s}
@@ -251,15 +251,16 @@ const kv = (key, value, last = false) => [
 
 const TERM_LINES = [
   { cmd: 'whoami' },
-  { out: [tk('Thái Bảo Long', C.text), tk('  ·  full-stack developer  ·  HCMUT', C.slate)] },
+  { out: [tk('Thái Bảo Long', C.text), tk('  ·  casino software developer  ·  Vegas Club', C.slate)] },
   { cmd: 'cat ~/profile.json' },
   { out: [tk('{')] },
   { out: kv('location', str('Ho Chi Minh City, Vietnam')) },
-  { out: kv('education', str('HCMUT · Bach Khoa University')) },
-  { out: kv('focus', arr(['realtime systems', 'web platforms', 'desktop apps'])) },
-  { out: kv('stack', arr(['TypeScript', 'React', 'NestJS', 'Electron', 'PostgreSQL'])) },
+  { out: kv('work', str('Vegas E-Gaming Club @ Caravelle Saigon')) },
+  { out: kv('education', str('HCMUT · Bach Khoa University (graduated)')) },
+  { out: kv('focus', arr(['jackpot displays', 'LED signage', 'player systems'])) },
+  { out: kv('stack', arr(['TypeScript', 'React', 'NestJS', 'Electron', 'C#', 'PostgreSQL'])) },
   { out: kv('offline', arr(['gym', 'football', 'Man United'])) },
-  { out: kv('status', tk('"open to collab"', C.amber), true) },
+  { out: kv('status', tk('"shipping to the casino floor"', C.amber), true) },
   { out: [tk('}')] },
   { cmd: 'echo $MOTTO' },
   { out: [tk('Build it. Ship it. Make it better.', C.cyan)] },
@@ -270,7 +271,7 @@ function terminal() {
   const W = 900, FS = 15, LH = 25, TOP = 78, PAD = 28;
   const CW = FS * MONO_CHAR_W;
   const H = TOP + TERM_LINES.length * LH + 22;
-  const promptTokens = [tk('long', C.green), tk('@'), tk('hcmut', C.green), tk(':'), tk('~', C.cyan), tk('$ ', C.text)];
+  const promptTokens = [tk('long', C.green), tk('@'), tk('vegas', C.green), tk(':'), tk('~', C.cyan), tk('$ ', C.text)];
   const promptLen = promptTokens.reduce((n, [s]) => n + s.length, 0);
   const tspans = (tokens) => tokens.map(([s, c]) => `<tspan fill="${c}">${esc(s)}</tspan>`).join('');
   const appear = (t) => `<animate attributeName="opacity" from="0" to="1" begin="${r1(t)}s" dur="0.15s" fill="freeze"/>`;
@@ -311,7 +312,7 @@ function terminal() {
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="14" fill="none" stroke="url(#border)" stroke-opacity="0.6" stroke-width="1.5"/>
 <path d="M1 42H${W - 1}" stroke="${C.cyan}" stroke-opacity="0.12"/>
 <circle cx="24" cy="21.5" r="6" fill="#ff5f57"/><circle cx="44" cy="21.5" r="6" fill="#febc2e"/><circle cx="64" cy="21.5" r="6" fill="#28c840"/>
-<text x="${W / 2}" y="26" text-anchor="middle" font-family="${MONO}" font-size="12" fill="${C.dim}">long@hcmut: ~ — zsh</text>
+<text x="${W / 2}" y="26" text-anchor="middle" font-family="${MONO}" font-size="12" fill="${C.dim}">long@vegas: ~ — zsh</text>
 <g font-family="${MONO}" font-size="${FS}" xml:space="preserve">${body}</g>
 </svg>`;
 }
