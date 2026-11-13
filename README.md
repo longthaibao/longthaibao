@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/hero.svg" width="100%" alt="Thái Bảo Long — Casino Software Developer" />
+  <img src="./assets/hero.svg" width="100%" alt="Thái Bảo Long — Software Developer" />
 
   <br/><br/>
 
