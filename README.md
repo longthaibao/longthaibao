@@ -50,12 +50,7 @@
 
 <h2 align="center">⟨ Contributions /⟩</h2>
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/longthaibao/longthaibao/output/snake-dark.svg" />
-    <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/longthaibao/longthaibao/output/snake.svg" />
-  </picture>
-</div>
+<img src="./assets/contrib.svg" width="100%" alt="Contribution city — last 365 days" />
 
 <br/>
 

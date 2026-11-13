@@ -366,16 +366,222 @@ function footer() {
 </svg>`;
 }
 
+/* ---------------------------------------------------------------- contribution city */
+
+const GH_USER = process.env.GH_USER || 'longthaibao';
+const DAY_MS = 86_400_000;
+
+// Lấy đúng dữ liệu lịch contribution mà profile công khai đang hiển thị (gồm private nếu user bật),
+// không cần token. Parse chặt + kiểm tra số ngày để markup GitHub đổi thì fail rõ ràng thay vì vẽ sai.
+async function fetchContributions() {
+  const res = await fetch(`https://github.com/users/${encodeURIComponent(GH_USER)}/contributions`, {
+    headers: { 'User-Agent': 'profile-readme-build' },
+    signal: AbortSignal.timeout(15_000),
+  });
+  if (!res.ok) throw new Error(`GitHub trả HTTP ${res.status}`);
+  const html = await res.text();
+
+  const counts = new Map();
+  for (const m of html.matchAll(/<tool-tip\b[^>]*\bfor="([^"]+)"[^>]*>([^<]*)<\/tool-tip>/g)) {
+    const n = /^(\d[\d,]*) contributions?\b/.exec(m[2].trim());
+    counts.set(m[1], n ? Number(n[1].replace(/,/g, '')) : 0);
+  }
+  const days = [];
+  for (const m of html.matchAll(/<td\b[^>]*\bdata-date="(\d{4}-\d{2}-\d{2})"[^>]*>/g)) {
+    const id = /\bid="([^"]+)"/.exec(m[0])?.[1];
+    days.push({ date: m[1], count: counts.get(id) ?? 0 });
+  }
+  if (days.length < 300) throw new Error(`parse lịch thất bại: chỉ đọc được ${days.length} ngày`);
+  return days.sort((a, b) => (a.date < b.date ? -1 : 1));
+}
+
+// Dữ liệu giả để xem trước giao diện (CONTRIB_DEMO=1), không bao giờ dùng cho bản push
+function demoContributions() {
+  const rand = rng(2710);
+  const end = Date.UTC(2026, 10, 13);
+  return Array.from({ length: 371 }, (_, i) => {
+    const d = new Date(end - (370 - i) * DAY_MS);
+    const weekend = d.getUTCDay() % 6 === 0;
+    const burst = Math.sin(i / 23) > 0.4 ? 2.2 : 1;
+    const count = rand() < (weekend ? 0.45 : 0.12) ? 0 : Math.round(rand() ** 2 * 9 * burst);
+    return { date: d.toISOString().slice(0, 10), count };
+  });
+}
+
+function contribStats(days) {
+  let total = 0, longest = 0, run = 0, peak = days[0], active = 0;
+  for (const d of days) {
+    total += d.count;
+    if (d.count > 0) { active++; run++; longest = Math.max(longest, run); } else run = 0;
+    if (d.count > peak.count) peak = d;
+  }
+  // Streak hiện tại: hôm nay chưa commit thì vẫn tính từ hôm qua
+  let current = 0;
+  let i = days.length - 1;
+  if (days[i].count === 0) i--;
+  while (i >= 0 && days[i].count > 0) { current++; i--; }
+  return { total, longest, current, peak, active };
+}
+
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  const target = amt > 0 ? 255 : 0, k = Math.abs(amt);
+  const ch = (v) => Math.round(v + (target - v) * k).toString(16).padStart(2, '0');
+  return `#${ch(n >> 16)}${ch((n >> 8) & 255)}${ch(n & 255)}`;
+}
+
+const LEVEL_COLORS = ['#1b2440', '#0e7490', C.cyan, C.violet, C.pink];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function contribCity(days) {
+  const W = 1200, H = 500, FRONT = 446;
+  const CELL = 19, BW = 13, PDX = 6, PDY = 8, RDX = 8, RDY = 11, MAXH = 112;
+  const st = contribStats(days);
+  const max = Math.max(1, st.peak.count);
+  const firstWd = new Date(`${days[0].date}T00:00:00Z`).getUTCDay();
+  const weeks = Math.floor((days.length - 1 + firstWd) / 7) + 1;
+  const x0 = Math.round((W - (weeks * CELL + 6 * RDX + PDX)) / 2);
+
+  // Chủ nhật ở hàng xa nhất (giống lịch GitHub: CN nằm trên cùng)
+  const place = (i) => {
+    const wd = (i + firstWd) % 7, week = Math.floor((i + firstWd) / 7), back = 6 - wd;
+    return { x: x0 + week * CELL + back * RDX, base: FRONT - back * RDY, week, back };
+  };
+  const levelOf = (c) => (c === 0 ? 0 : Math.min(4, 1 + Math.floor(Math.sqrt(c / max) * 3.999)));
+
+  const order = days.map((d, i) => ({ ...d, ...place(i) }))
+    .sort((a, b) => b.back - a.back || a.week - b.week); // vẽ xa → gần, trái → phải (painter's algorithm)
+
+  let bars = '', peakPos = null;
+  for (const d of order) {
+    const lv = levelOf(d.count), col = LEVEL_COLORS[lv];
+    const h = d.count === 0 ? 2 : 8 + Math.sqrt(d.count / max) * MAXH;
+    const { x, base } = d, top = base - h;
+    const front = `${x},${r1(top)} ${x + BW},${r1(top)} ${x + BW},${base} ${x},${base}`;
+    const side = `${x + BW},${r1(top)} ${x + BW + PDX},${r1(top - PDY)} ${x + BW + PDX},${base - PDY} ${x + BW},${base}`;
+    const lid = `${x},${r1(top)} ${x + BW},${r1(top)} ${x + BW + PDX},${r1(top - PDY)} ${x + PDX},${r1(top - PDY)}`;
+    const delay = r1(0.3 + d.week * 0.028 + d.back * 0.05);
+    const op = lv === 0 ? ' opacity="0.55"' : '';
+    bars += `<g class="b" style="transform-origin:${x}px ${base}px;animation-delay:${delay}s"${op}>`
+      + `<polygon points="${front}" fill="${col}"/><polygon points="${side}" fill="${shade(col, -0.45)}"/>`
+      + `<polygon points="${lid}" fill="${shade(col, 0.35)}"/></g>`;
+    if (d.date === st.peak.date) peakPos = { x: x + (BW + PDX) / 2, y: top - PDY };
+  }
+
+  // Mặt sàn + lưới tuần
+  const fl = { x: x0 - 12, y: FRONT + 6 }, fr = { x: x0 + weeks * CELL + 6, y: FRONT + 6 };
+  const bd = { x: 6 * RDX + PDX + 8, y: -(6 * RDY + PDY + 8) };
+  let grid = '';
+  for (let w = 0; w <= weeks; w += 1) {
+    const gx = x0 - 3 + w * CELL;
+    grid += `<line x1="${gx}" y1="${FRONT + 6}" x2="${gx + bd.x}" y2="${FRONT + 6 + bd.y}"/>`;
+  }
+  for (let r = 0; r <= 7; r++) {
+    const t = r / 7;
+    grid += `<line x1="${r1(fl.x + bd.x * t)}" y1="${r1(fl.y + bd.y * t)}" x2="${r1(fr.x + bd.x * t)}" y2="${r1(fr.y + bd.y * t)}"/>`;
+  }
+
+  let months = '', lastMonth = -1;
+  days.forEach((d, i) => {
+    const m = Number(d.date.slice(5, 7)) - 1;
+    if (m !== lastMonth && Number(d.date.slice(8)) <= 7) {
+      const { week } = place(i);
+      months += `<text x="${x0 + week * CELL}" y="${FRONT + 28}">${MONTHS[m].toUpperCase()}</text>`;
+    }
+    lastMonth = m;
+  });
+
+  const fmtDate = (s) => `${MONTHS[Number(s.slice(5, 7)) - 1]} ${s.slice(8)}`;
+  const statBlocks = [
+    ['TOTAL', st.total.toLocaleString('en-US'), C.cyan],
+    ['ACTIVE DAYS', st.active, C.text],
+    ['LONGEST STREAK', `${st.longest}d`, C.violet],
+    ['CURRENT STREAK', `${st.current}d`, C.pink],
+  ].map(([label, val, col], i) => {
+    const x = W - 48 - (3 - i) * 150;
+    return `<text x="${x}" y="70" text-anchor="end" font-family="${SANS}" font-size="28" font-weight="800" fill="${col}">${esc(val)}</text>`
+      + `<text x="${x}" y="92" text-anchor="end" font-family="${MONO}" font-size="10" letter-spacing="2" fill="${C.dim}">${label}</text>`;
+  }).join('');
+
+  const beacon = peakPos && st.peak.count > 0 ? `
+  <g class="fadein" style="animation-delay:2.6s">
+    <line x1="${r1(peakPos.x)}" y1="${r1(peakPos.y)}" x2="${r1(peakPos.x)}" y2="${r1(peakPos.y - 46)}" stroke="${C.pink}" stroke-dasharray="3 3"/>
+    <circle cx="${r1(peakPos.x)}" cy="${r1(peakPos.y)}" r="4" fill="${C.pink}" filter="url(#glow)">
+      <animate attributeName="r" values="3;7;3" dur="1.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="${r1(peakPos.x)}" y="${r1(peakPos.y - 54)}" text-anchor="middle" font-family="${MONO}" font-size="11" letter-spacing="1.5" fill="${C.pink}">PEAK · ${st.peak.count} · ${fmtDate(st.peak.date).toUpperCase()}</text>
+  </g>` : '';
+
+  const empty = st.total === 0
+    ? `<text x="${W / 2}" y="330" text-anchor="middle" font-family="${MONO}" font-size="14" letter-spacing="4" fill="${C.slate}">NO PUBLIC ACTIVITY YET</text>` : '';
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${st.total} contributions in the last year">
+<style>
+  .b{animation:rise 1.1s cubic-bezier(.2,.9,.25,1) both}
+  @keyframes rise{from{transform:scaleY(0)}}
+  .fadein{animation:fadein .8s ease-out both}
+  @keyframes fadein{from{opacity:0}}
+</style>
+<defs>
+  ${skyGradient('sky')}
+  ${glowFilter('glow', 3)}
+  <radialGradient id="hz" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="${C.violet}" stop-opacity="0.4"/><stop offset="1" stop-color="${C.cyan}" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="${C.cyan}" stop-opacity="0"/><stop offset="0.5" stop-color="${C.cyan}" stop-opacity="0.22"/><stop offset="1" stop-color="${C.cyan}" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="${C.cyan}"/><stop offset="0.6" stop-color="${C.violet}"/><stop offset="1" stop-color="${C.pink}"/>
+  </linearGradient>
+  <clipPath id="frame"><rect width="${W}" height="${H}" rx="18"/></clipPath>
+</defs>
+<g clip-path="url(#frame)">
+  <rect width="${W}" height="${H}" fill="url(#sky)"/>
+  ${stars({ w: W, h: 300, count: 50, seed: 53 })}
+  <ellipse cx="${W / 2}" cy="${FRONT - 60}" rx="${W * 0.55}" ry="90" fill="url(#hz)"/>
+
+  <text x="48" y="64" font-family="${SANS}" font-size="26" font-weight="800" letter-spacing="3" fill="url(#title)">CONTRIBUTION CITY</text>
+  <text x="48" y="90" font-family="${MONO}" font-size="12" letter-spacing="1.5" fill="${C.dim}">// last 365 days · github.com/${esc(GH_USER)} · peak ${st.peak.count}</text>
+  ${statBlocks}
+
+  <polygon points="${fl.x},${fl.y} ${fr.x},${fr.y} ${fr.x + bd.x},${fr.y + bd.y} ${fl.x + bd.x},${fl.y + bd.y}" fill="${C.cyan}" fill-opacity="0.04" stroke="${C.cyan}" stroke-opacity="0.35"/>
+  <g stroke="${C.cyan}" stroke-opacity="0.08">${grid}</g>
+  <g>${bars}</g>
+  <g font-family="${MONO}" font-size="10" letter-spacing="1.5" fill="${C.dim}">${months}</g>
+  ${beacon}
+  ${empty}
+
+  <rect x="-120" y="120" width="120" height="${FRONT - 100}" fill="url(#beam)">
+    <animate attributeName="x" values="-120;${W}" dur="5s" begin="3s" repeatCount="indefinite"/>
+  </rect>
+</g>
+<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="18" fill="none" stroke="${C.cyan}" stroke-opacity="0.25"/>
+</svg>`;
+}
+
 /* ---------------------------------------------------------------- main */
 
-const files = { 'hero.svg': hero(), 'terminal.svg': terminal(), 'divider.svg': divider(), 'footer.svg': footer() };
-try {
+async function main() {
   mkdirSync(OUT, { recursive: true });
+  const files = { 'hero.svg': hero(), 'terminal.svg': terminal(), 'divider.svg': divider(), 'footer.svg': footer() };
+
+  try {
+    const days = process.env.CONTRIB_DEMO ? demoContributions() : await fetchContributions();
+    files['contrib.svg'] = contribCity(days);
+  } catch (err) {
+    // Giữ nguyên contrib.svg cũ thay vì ghi đè bằng thành phố trống
+    console.error(`✗ contrib.svg: ${err.message}`);
+    process.exitCode = 1;
+  }
+
   for (const [name, svg] of Object.entries(files)) {
     writeFileSync(join(OUT, name), svg, 'utf8');
     console.log(`✓ assets/${name}  ${(Buffer.byteLength(svg) / 1024).toFixed(1)} KB`);
   }
-} catch (err) {
+}
+
+main().catch((err) => {
   console.error('Build SVG thất bại:', err.message);
   process.exitCode = 1;
-}
+});
