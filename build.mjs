@@ -361,7 +361,7 @@ function footer() {
   ${stars({ w: W, h: HY - 10, count: 40, seed: 10 })}
   ${floor.body}
   <text x="${W / 2}" y="72" text-anchor="middle" font-family="${SANS}" font-size="40" font-weight="800" letter-spacing="10" fill="url(#txt)" filter="url(#glow)">THANKS FOR VISITING</text>
-  <text x="${W / 2}" y="108" text-anchor="middle" font-family="${MONO}" font-size="14" letter-spacing="3" fill="${C.slate}">see you in the next commit  ·  Manucian forever</text>
+  <text x="${W / 2}" y="108" text-anchor="middle" font-family="${MONO}" font-size="14" letter-spacing="3" fill="${C.slate}">see you in the next commit</text>
 </g>
 <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="18" fill="none" stroke="${C.violet}" stroke-opacity="0.25"/>
 </svg>`;
